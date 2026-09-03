@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidar-camera-calibrator.dev/schemas/v1/static-transform-tree.schema.json",
+  "title": "lidar-camera.StaticTransformTree",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["transforms"],
+  "properties": {
+    "transforms": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["target", "source", "matrix"],
+        "properties": {
+          "target": {"$ref": "#/$defs/frameRef"},
+          "source": {"$ref": "#/$defs/frameRef"},
+          "matrix": {"$ref": "#/$defs/matrix4x4"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "frameRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["role"],
+      "properties": {
+        "role": {"enum": ["imu", "lidar", "camera"]},
+        "camera_name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"role": {"const": "camera"}}},
+          "then": {"required": ["camera_name"]},
+          "else": {"not": {"required": ["camera_name"]}}
+        }
+      ]
+    },
+    "matrix4x4": {"type": "array", "minItems": 16, "maxItems": 16, "items": {"type": "number"}}
+  }
+}

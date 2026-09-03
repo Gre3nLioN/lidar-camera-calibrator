@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidar-camera-calibrator.dev/schemas/v1/camera-image-frame.schema.json",
+  "title": "lidar-camera.CameraImageFrame",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["camera_name", "frame_index", "timestamp_ns", "source_timestamp_ns", "synchronization_delta_ns", "format", "data"],
+  "properties": {
+    "camera_name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+    "frame_index": {"type": "integer", "minimum": 0},
+    "timestamp_ns": {"type": "integer", "minimum": 0},
+    "source_timestamp_ns": {"type": "integer", "minimum": 0},
+    "synchronization_delta_ns": {"type": "integer"},
+    "format": {"enum": ["png", "jpeg"]},
+    "data": {"type": "string", "contentEncoding": "base64"}
+  }
+}

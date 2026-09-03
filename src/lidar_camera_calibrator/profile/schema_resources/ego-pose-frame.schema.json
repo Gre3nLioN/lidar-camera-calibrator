@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidar-camera-calibrator.dev/schemas/v1/ego-pose-frame.schema.json",
+  "title": "lidar-camera.EgoPoseFrame",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["frame_index", "timestamp_ns", "world_from_imu"],
+  "properties": {
+    "frame_index": {"type": "integer", "minimum": 0},
+    "timestamp_ns": {"type": "integer", "minimum": 0},
+    "world_from_imu": {"type": "array", "minItems": 16, "maxItems": 16, "items": {"type": "number"}}
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidar-camera-calibrator.dev/schemas/v1/scene-manifest.schema.json",
+  "title": "lidar-camera.SceneManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile_name", "profile_version", "frame_count", "cameras", "synchronization", "topics", "created_by"],
+  "properties": {
+    "profile_name": {"const": "lidar-camera-scene"},
+    "profile_version": {"const": 1},
+    "frame_count": {"type": "integer", "minimum": 1},
+    "cameras": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "image_topic", "calibration_topic"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+          "image_topic": {"type": "string", "pattern": "^/scene/cameras/[A-Za-z][A-Za-z0-9_-]*/image$"},
+          "calibration_topic": {"type": "string", "pattern": "^/scene/cameras/[A-Za-z][A-Za-z0-9_-]*/calibration$"}
+        }
+      }
+    },
+    "synchronization": {
+      "type": "object", "additionalProperties": false,
+      "required": ["timeline", "camera_method", "max_delta_ms", "imu_method"],
+      "properties": {
+        "timeline": {"const": "lidar"},
+        "camera_method": {"enum": ["nearest", "previous", "next"]},
+        "max_delta_ms": {"type": "number", "minimum": 0},
+        "imu_method": {"const": "interpolate"}
+      }
+    },
+    "topics": {
+      "type": "object", "additionalProperties": false,
+      "required": ["static_transforms", "lidar_points", "imu_pose", "frames"],
+      "properties": {
+        "static_transforms": {"const": "/scene/static_transforms"},
+        "lidar_points": {"const": "/scene/lidar/points"},
+        "imu_pose": {"const": "/scene/imu/pose"},
+        "frames": {"const": "/scene/frames"}
+      }
+    },
+    "created_by": {
+      "type": "object", "additionalProperties": false,
+      "required": ["library", "version"],
+      "properties": {"library": {"type": "string", "minLength": 1}, "version": {"type": "string", "minLength": 1}}
+    }
+  }
+}

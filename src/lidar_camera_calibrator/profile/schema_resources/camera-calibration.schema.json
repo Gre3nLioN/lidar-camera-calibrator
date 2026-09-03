@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidar-camera-calibrator.dev/schemas/v1/camera-calibration.schema.json",
+  "title": "lidar-camera.CameraCalibration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["camera_name", "image_size", "intrinsics"],
+  "properties": {
+    "camera_name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+    "image_size": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 1}]
+    },
+    "intrinsics": {"type": "array", "minItems": 9, "maxItems": 9, "items": {"type": "number"}},
+    "rectification": {"type": "array", "minItems": 9, "maxItems": 9, "items": {"type": "number"}},
+    "projection_matrix": {"type": "array", "minItems": 12, "maxItems": 12, "items": {"type": "number"}}
+  }
+}

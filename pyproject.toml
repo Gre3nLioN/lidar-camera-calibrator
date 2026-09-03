@@ -1,0 +1,80 @@
+[project]
+name = "lidar-camera-calibrator"
+version = "0.1.0"
+description = "Data-source-agnostic desktop workspace for manual LiDAR-to-camera calibration"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+keywords = ["calibration", "camera", "lidar", "mcap", "pyside6", "sensor-fusion"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+    "jsonschema>=4.23",
+    "mcap>=1.4",
+    "numpy>=2.0",
+    "Pillow>=10.0",
+    "PySide6>=6.8",
+]
+
+[project.urls]
+Documentation = "https://gre3nlion.github.io/lidar-camera-calibrator/"
+Issues = "https://github.com/Gre3nLioN/lidar-camera-calibrator/issues"
+Repository = "https://github.com/Gre3nLioN/lidar-camera-calibrator"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+docs = [
+    "mkdocs-material>=9.6",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lidar_camera_calibrator"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/.github",
+    "/docs/api.md",
+    "/docs/changelog.md",
+    "/docs/contributing.md",
+    "/docs/data-integration.md",
+    "/docs/getting-started.md",
+    "/docs/index.md",
+    "/docs/migration.md",
+    "/docs/platform-support.md",
+    "/docs/release.md",
+    "/docs/scene-mcap-profile.md",
+    "/docs/scene-profile-performance.md",
+    "/docs/schema-v1-review.md",
+    "/examples",
+    "/scripts",
+    "/src",
+    "/tests",
+    "/CHANGELOG.md",
+    "/CONTRIBUTING.md",
+    "/LICENSE",
+    "/mkdocs.yml",
+    "/pyproject.toml",
+    "/README.md",
+    "/uv.lock",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+
+target-version = "py311"

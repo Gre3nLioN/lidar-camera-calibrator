@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidar-camera-calibrator.dev/schemas/v1/point-cloud-frame.schema.json",
+  "title": "lidar-camera.PointCloudFrame",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["frame_index", "timestamp_ns", "shape", "dtype", "fields", "data"],
+  "properties": {
+    "frame_index": {"type": "integer", "minimum": 0},
+    "timestamp_ns": {"type": "integer", "minimum": 0},
+    "shape": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "prefixItems": [{"type": "integer", "minimum": 1}, {"const": 4}]
+    },
+    "dtype": {"const": "float32-le"},
+    "fields": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "prefixItems": [{"const": "x"}, {"const": "y"}, {"const": "z"}, {"const": "intensity"}]
+    },
+    "data": {"type": "string", "contentEncoding": "base64"}
+  }
+}
