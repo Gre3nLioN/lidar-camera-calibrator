@@ -1,8 +1,8 @@
 [project]
 name = "lidar-camera-calibrator"
-version = "0.1.0"
+version = "0.1.1"
 description = "Data-source-agnostic desktop workspace for manual LiDAR-to-camera calibration"
-readme = "README.md"
+readme = { file = "README-PYPI.md", content-type = "text/markdown" }
 requires-python = ">=3.11"
 license = "Apache-2.0"
 keywords = ["calibration", "camera", "lidar", "mcap", "pyside6", "sensor-fusion"]
@@ -66,6 +66,7 @@ include = [
     "/LICENSE",
     "/mkdocs.yml",
     "/pyproject.toml",
+    "/README-PYPI.md",
     "/README.md",
     "/uv.lock",
 ]

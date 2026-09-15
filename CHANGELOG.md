@@ -6,10 +6,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
-### Added
+## [0.1.1] - 2026-09-15
 
-- GitHub Pages documentation for generic data integration, public APIs, platforms, and releases.
-- Apache-2.0 open-source licensing and package metadata.
+### Fixed
+
+- Use a dedicated screenshot-free PyPI project description while retaining screenshots in the GitHub README and documentation site.
 
 ## [0.1.0] - 2026-09-02
 
@@ -22,5 +23,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Direction-explicit multi-camera JSON export and reload.
 - Staged startup and continuously replenished frame buffering.
 
-[Unreleased]: https://github.com/Gre3nLioN/lidar-camera-calibrator/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Gre3nLioN/lidar-camera-calibrator/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Gre3nLioN/lidar-camera-calibrator/releases/tag/v0.1.1
 [0.1.0]: https://github.com/Gre3nLioN/lidar-camera-calibrator/releases/tag/v0.1.0
