@@ -45,6 +45,7 @@ packages = ["src/lidar_camera_calibrator"]
 [tool.hatch.build.targets.sdist]
 include = [
     "/.github",
+    "/docs/assets",
     "/docs/api.md",
     "/docs/changelog.md",
     "/docs/contributing.md",
@@ -53,7 +54,6 @@ include = [
     "/docs/index.md",
     "/docs/migration.md",
     "/docs/platform-support.md",
-    "/docs/release.md",
     "/docs/scene-mcap-profile.md",
     "/docs/scene-profile-performance.md",
     "/docs/schema-v1-review.md",

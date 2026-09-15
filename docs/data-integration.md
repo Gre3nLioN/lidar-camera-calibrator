@@ -1,6 +1,6 @@
 # Integrating your data
 
-The package supports **any source that your application can translate into the generic sensor contract**. It does not require a particular folder structure, recorder, vehicle, camera count, or camera name.
+The package supports **any source that your application can translate into the generic sensor contract**. It does not require a particular folder structure, recorder, vehicle, camera count, camera name, or a KITTI dataset. KITTI is an optional tested pipeline; it is not the integration model.
 
 ## Required semantic data
 

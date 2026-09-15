@@ -1,14 +1,20 @@
 # LiDAR Camera Calibrator
 
-**Bring your own LiDAR and camera data to a strict, reusable calibration workspace.**
+**Manually refine static LiDAR-to-camera calibration with the data you already have.**
 
 LiDAR Camera Calibrator is an open-source PySide6 package for manually refining static LiDAR-to-camera calibration. It provides synchronized playback, a navigable 3D point-cloud view, projected camera overlays, arbitrary-camera calibration, and direction-explicit JSON results.
 
-## Not a KITTI-specific tool
+It is intended for the practical work after a vehicle rig has been assembled: tightening alignment for labeling, validating a sensor setup, investigating a new calibration hypothesis, or experimenting with a different projection. Because vehicle rigs often remain stable for long periods, a deliberate manual refinement pass can be useful when an automatic calibration is unavailable or does not meet the precision needed for a workflow.
 
-The package does not require KITTI directory layouts or calibration files. KITTI is used only as a known development and regression-test dataset.
+![Main workspace showing the LiDAR scene, synchronized camera previews, scene inspector, and timeline.](assets/main-workspace.png)
 
-The supported integration boundary is semantic data:
+![Calibration workspace showing projected LiDAR points and live extrinsic/intrinsic controls.](assets/calibration-workspace.png)
+
+## Use any dataset
+
+The package accepts semantic sensor data, not a particular vehicle dataset or directory layout. Your data can come from raw/proprietary files, Python and NumPy arrays, a custom lazy loader, or a supported standard Foxglove MCAP recording. KITTI is available as an optional, tested example pipeline.
+
+The generic integration boundary is:
 
 - timestamped LiDAR point clouds;
 - one or more timestamped camera streams;

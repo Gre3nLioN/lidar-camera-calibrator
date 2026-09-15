@@ -49,6 +49,10 @@ uv run python tests/installed_wheel_smoke.py
 
 Include focused tests for behavior changes and update user-facing documentation when public behavior changes.
 
+## Maintainer release notes
+
+Release instructions belong with project maintenance rather than the end-user documentation site. Before publishing, run the full test suite, strict documentation build, isolated wheel smoke test, and `uv build`; publish the matching artifacts to PyPI and a tagged GitHub Release. Preserve the frozen `lidar-camera-scene/1` contract or introduce a new profile version with a migration path.
+
 ## Pull requests
 
 Keep changes focused, explain compatibility implications, and identify the platforms actually tested. Do not claim Windows or macOS validation based only on Linux/offscreen results.

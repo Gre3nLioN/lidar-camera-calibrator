@@ -1,12 +1,18 @@
 # LiDAR Camera Calibrator
 
-A data-source-agnostic PySide6 desktop application for manually refining static LiDAR-to-camera calibration over synchronized sequences.
+A PySide6 desktop application for **manual refinement of static LiDAR-to-camera calibration** over synchronized sequences.
 
-> **Bring your own data.** The calibrator is not tied to KITTI. It accepts any dataset that can be normalized into timestamped point clouds, one or more camera streams, camera intrinsics, a connected sensor transform tree, and IMU/world poses. Data can come from raw files, Python/NumPy arrays, a custom lazy loader, or a standard Foxglove MCAP recording. The KITTI adapter and sample drive are development fixtures, not the primary integration model.
+It is built for teams that need to inspect and tighten a calibration after a vehicle rig is assembled: for high-quality labeling, sensor validation, map/vehicle experiments, or testing a new calibration hypothesis. Most rigs do not change frequently, so a careful manual refinement pass can be a practical way to get the alignment needed for a specific dataset or workflow.
+
+> **Use the data you already have.** Normalize raw files, Python/NumPy arrays, custom lazy loaders, or standard Foxglove MCAP into the generic sensor contract. KITTI is included as an optional, tested example pipeline.
+
+![Main workspace: navigable LiDAR scene, synchronized camera previews, scene inspector, and timeline.](docs/assets/main-workspace.png)
+
+![Calibration workspace: projected LiDAR points on the selected camera with live extrinsic and intrinsic controls.](docs/assets/calibration-workspace.png)
 
 ## Features
 
-- arbitrary named cameras and independent camera calibration;
+- manual extrinsic and optional intrinsic refinement for arbitrary named cameras;
 - synchronized LiDAR, camera, and interpolated ego-pose timeline;
 - navigable CPU-rendered 3D point-cloud view and camera overlays;
 - direction-explicit transforms using `P_target = T_target_from_source @ P_source`;
@@ -30,7 +36,7 @@ uv sync --locked
 uv run python examples/numpy_scene.py --frames 100 --launch
 ```
 
-## Generic workflow
+## Manual calibration workflow
 
 Convert application-owned data to the canonical scene profile, then launch the viewer:
 
@@ -69,7 +75,6 @@ python -m lidar_camera_calibrator scene.mcap
 - [Python API](docs/api.md)
 - [Canonical MCAP profile](docs/scene-mcap-profile.md)
 - [Platform support](docs/platform-support.md)
-- [Release process](docs/release.md)
 - [Contributing](CONTRIBUTING.md)
 
 Build the GitHub Pages site locally with:

@@ -31,6 +31,14 @@ theme:
         icon: material/weather-sunny
         name: Use light mode
 
+exclude_docs: |
+  /geometry-contract.md
+  /geometry-review.md
+  /performance-plan.md
+  /phase2-review.md
+  /rendering-smoke-test.md
+  /ui-plan.md
+
 nav:
   - Overview: index.md
   - Getting started: getting-started.md
@@ -42,7 +50,6 @@ nav:
       - Schema compatibility: schema-v1-review.md
       - Performance: scene-profile-performance.md
   - Platform support: platform-support.md
-  - Release process: release.md
   - Contributing: contributing.md
   - Changelog: changelog.md
 
